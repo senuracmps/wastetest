@@ -1,0 +1,646 @@
+/* =========================================================
+   WasteManage LK — Shared Stylesheet
+   Purpose: Provides consistent colors, spacing, typography
+   and interactive hover/animation effects for every page
+   on the site (Home, Collection Schedule, Report Dumping,
+   Special Pickup, Recycling Guide, Recycling Centers).
+   ========================================================= */
+
+/* ---- CSS Custom Properties (design tokens) ----
+   Keeping colors/spacing as variables means we only have to
+   change a value in ONE place to re-theme the whole site. */
+:root {
+  --green-dark: #0e6e4f;      /* Header/hero gradient start */
+  --green-mid: #128a5f;       /* Header/hero gradient end   */
+  --green-accent: #10a35d;    /* Buttons / highlights        */
+  --green-pale: #e9f9f0;      /* Environmental section bg   */
+  --text-dark: #1c1c1c;
+  --text-muted: #5f6b66;
+  --border-light: #e3e6e4;
+  --card-bg: #f7f8f7;
+  --white: #ffffff;
+  --footer-bg: #1a1a1a;
+  --shadow-soft: 0 4px 14px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 12px 28px rgba(16, 163, 93, 0.25);
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --transition-fast: 0.2s ease;
+  --transition-med: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---- Reset & base ----
+   Removes default browser spacing so our own spacing rules
+   are predictable across all browsers. */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-dark);
+  background: var(--white);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img{
+  display: block;
+}
+
+/* =========================================================
+   HEADER / NAVIGATION
+   ========================================================= */
+.site-header {
+  /* Solid color (not a gradient) so the header never looks
+     faded or blends into the hero section behind it. */
+  background: var(--green-dark);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 40px;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  /* Fixed positioning locks the header to the top of the
+     browser window at all times — it will NOT move or scroll
+     away with the rest of the page content. */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* subtle separation from content below */
+}
+
+/* Because the header is now removed from normal document flow
+   (position: fixed), the page content needs top padding equal
+   to the header's height so it isn't hidden underneath it. */
+body {
+  padding-top: 70px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--white);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.brand .logo-icon {
+  width: 26px;
+  height: 26px;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
+  color: rgba(255, 255, 255, 0.92);
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.login-btn {
+  background: rgba(0, 0, 0, 0.28);
+  color: var(--white);
+  padding: 9px 18px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background var(--transition-fast);
+}
+
+.login-btn:hover {
+  background: rgba(0, 0, 0, 0.42);
+}
+
+/* =========================================================
+   HERO SECTION
+   ========================================================= */
+.hero {
+  background: linear-gradient(160deg, var(--green-dark), var(--green-mid));
+  color: var(--white);
+  text-align: center;
+  padding: 64px 20px 80px;
+}
+
+.hero .hero-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 22px;
+  animation: floatIcon 3.5s ease-in-out infinite; /* gentle ambient motion */
+}
+
+.hero .search-icon {
+  width: 20px;
+  height: 20px;
+}
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.hero h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.hero p.subtitle {
+  max-width: 640px;
+  margin: 0 auto 36px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.05rem;
+}
+
+/* Search card floating on the hero */
+.search-card {
+  background: var(--white);
+  color: var(--text-dark);
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 30px 34px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.search-card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 18px;
+}
+
+.search-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.search-form input[type="text"] {
+  flex: 1;
+  min-width: 220px;
+  padding: 12px 16px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.search-form input[type="text"]:focus {
+  outline: none;
+  border-color: var(--green-accent);
+  box-shadow: 0 0 0 3px rgba(16, 163, 93, 0.18);
+}
+
+.search-form button {
+  background: var(--green-accent);
+  color: var(--white);
+  border: none;
+  padding: 12px 22px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.search-form button:hover {
+  background: #0c8a4e;
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   SECTION HEADINGS (shared across sections)
+   ========================================================= */
+.section {
+  padding: 60px 40px;
+}
+
+.section h2.section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 40px;
+}
+.section .mini-icon {
+  width: 25px;
+  height: 25px;
+}
+
+/* =========================================================
+   QUICK ACTIONS — clickable cards linking to other pages
+   ========================================================= */
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Each quick-action card is an <a> tag so the whole card is
+   clickable and navigates to its dedicated page. */
+.action-card {
+  position: relative; /* needed so the hover popup tooltip can be positioned inside */
+  background: var(--card-bg);
+  border: 2px solid transparent; /* transparent border reserves space so layout doesn't jump on hover */
+  border-radius: var(--radius-md);
+  padding: 26px;
+  display: block;
+  overflow: hidden;
+  transition: transform var(--transition-med), box-shadow var(--transition-med),
+    border-color var(--transition-med), background var(--transition-med);
+}
+
+/* Highlight border + lift + shadow glow on hover/focus */
+.action-card:hover,
+.action-card:focus-visible {
+  border-color: var(--green-accent);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  background: var(--white);
+}
+
+.action-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  color: var(--white);
+  transition: transform var(--transition-med);
+}
+
+/* Icon "pops" slightly bigger on hover for a playful micro-interaction */
+.action-card:hover .action-icon {
+  transform: scale(1.12) rotate(-4deg);
+}
+
+.action-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.action-card p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Hover "popup" tooltip that fades/slides in above the card */
+.hover-popup {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  transform: translate(-50%, 8px);
+  background: var(--text-dark);
+  color: var(--white);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  margin-bottom: 10px;
+  z-index: 5;
+}
+
+.hover-popup::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--text-dark);
+}
+
+.action-card:hover .hover-popup,
+.action-card:focus-visible .hover-popup {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* Icon background colors matching the reference design */
+.icon-blue { background: #2f7ff0; }
+.icon-red { background: #e0483f; }
+.icon-orange { background: #f2971a; }
+.icon-green { background: #17a35e; }
+.icon-purple { background: #9b4de0; }
+
+/* =========================================================
+   ENVIRONMENTAL AWARENESS SECTION
+   ========================================================= */
+.env-section {
+  background: var(--green-pale);
+}
+
+.env-section .section-intro {
+  text-align: center;
+  max-width: 720px;
+  margin: -20px auto 40px;
+  color: var(--text-muted);
+}
+
+.waste-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.waste-card {
+  background: var(--white);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  text-align: center;
+  padding: 30px 16px;
+  transition: transform var(--transition-med), box-shadow var(--transition-med),
+    border-color var(--transition-med);
+}
+
+.waste-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: var(--green-accent);
+  box-shadow: var(--shadow-hover);
+}
+
+.waste-dot {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  transition: transform var(--transition-med);
+}
+
+.waste-card:hover .waste-dot {
+  transform: scale(1.15);
+}
+
+.dot-organic { background: radial-gradient(circle at 35% 30%, #4ade80, #16a34a); }
+.dot-plastic { background: radial-gradient(circle at 35% 30%, #60a5fa, #2563eb); }
+.dot-paper { background: radial-gradient(circle at 35% 30%, #fbbf24, #d97706); }
+.dot-hazardous { background: radial-gradient(circle at 35% 30%, #f87171, #dc2626); }
+
+.waste-card h3 {
+  margin-bottom: 6px;
+}
+
+.waste-card p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* =========================================================
+   COVERAGE AREAS SECTION
+   ========================================================= */
+.coverage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.coverage-card {
+  background: var(--card-bg);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  padding: 24px 26px;
+  transition: border-color var(--transition-med), box-shadow var(--transition-med),
+    transform var(--transition-med);
+}
+
+.coverage-card:hover {
+  border-color: var(--green-accent);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+.coverage-card h3 {
+  margin-bottom: 12px;
+  color: var(--green-dark);
+}
+
+.coverage-card li {
+  color: var(--text-muted);
+  padding: 4px 0;
+  font-size: 0.92rem;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.coverage-card li:hover {
+  color: var(--green-accent);
+  transform: translateX(4px);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.site-footer {
+  background: var(--footer-bg);
+  color: rgba(255, 255, 255, 0.75);
+  padding: 50px 40px 20px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto 30px;
+}
+
+.footer-grid h3,
+.footer-grid h4 {
+  color: var(--white);
+  margin-bottom: 14px;
+}
+
+.footer-grid .brand {
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.footer-grid a {
+  display: block;
+  padding: 4px 0;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.footer-grid a:hover {
+  color: var(--green-accent);
+  transform: translateX(4px);
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 18px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* =========================================================
+   SIMPLE PLACEHOLDER PAGE (used by sub-pages like
+   collection-schedule.html, report-dumping.html, etc.)
+   ========================================================= */
+.placeholder-hero {
+  background: linear-gradient(160deg, var(--green-dark), var(--green-mid));
+  color: var(--white);
+  text-align: center;
+  padding: 70px 20px;
+}
+
+.placeholder-hero h1 {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+}
+
+.placeholder-body {
+  max-width: 720px;
+  margin: 50px auto;
+  padding: 0 20px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.back-home-link {
+  display: inline-block;
+  margin-top: 24px;
+  background: var(--green-accent);
+  color: var(--white);
+  padding: 12px 22px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.back-home-link:hover {
+  background: #0c8a4e;
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   RESPONSIVE RULES
+   ========================================================= */
+@media (max-width: 900px) {
+  .quick-actions-grid,
+  .waste-grid,
+  .coverage-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-nav {
+    display: none; /* collapse nav on very small screens to keep header tidy */
+  }
+  .quick-actions-grid,
+  .waste-grid,
+  .coverage-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
+}
+
+/* =========================================================
+   DARK MODE
+   Purpose: Overrides the color variables when the <body>
+   has the "dark-mode" class (toggled by script.js).
+   ========================================================= */
+body.dark-mode {
+  --text-dark: #f0f0f0;
+  --text-muted: #b8beba;
+  --border-light: #3a3f3c;
+  --card-bg: #1f2422;
+  --white: #ffffff;      /* used as "surface" color for cards/search box */
+  --footer-bg: #0d0f0f;
+  --green-pale: #10231a; /* dark tint for the Environmental Awareness section */
+
+  background: #14181a;
+  color: var(--text-dark);
+}
+
+/* Header stays solid dark instead of the light green */
+body.dark-mode .site-header {
+  background: #0d3d2b;
+}
+
+/* Cards/search box use the dark surface color but keep readable text */
+body.dark-mode .action-card,
+body.dark-mode .waste-card,
+body.dark-mode .coverage-card,
+body.dark-mode .search-card {
+  background: var(--card-bg);
+  color: var(--text-dark);
+}
+
+/* Simple toggle button styling */
+.theme-toggle {
+  background: rgba(255, 255, 255, 0.18);
+  border: none;
+  color: #fff;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: rotate(10deg);
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WasteManage LK — Waste Management LK</title>
+
+  <!-- Shared stylesheet used across every page of the site -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- =====================================================
+       HEADER / NAVIGATION
+       Purpose: Site branding + navigation links to every
+       major page, plus a Login button (top-right).
+       ===================================================== -->
+  <header class="site-header">
+    <a href="index.html" class="brand">
+      <img src="images/logo.png" alt="Logo" class="logo-icon">
+      WasteManage LK
+    </a>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="index.html" class="active">Home</a>
+      <a href="collection-schedule.html">Collection Schedule</a>
+      <a href="report-dumping.html">Report Dumping</a>
+      <a href="special-pickup.html">Special Pickup</a>
+      <a href="recycling-guide.html">Recycling Guide</a>
+      <a href="recycling-centers.html">Recycling Centers</a>
+    </nav>
+
+    <a href="login.html" class="login-btn">&#8594; Login</a>
+
+    <!-- Dark mode toggle button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+  </header>
+
+  <!-- =====================================================
+       HERO SECTION
+       Purpose: Introduces the platform and lets the user
+       immediately search for their district's collection
+       schedule without navigating away first.
+       ===================================================== -->
+  <section class="hero">
+    <img src="images/logo.png" alt="Logo" class="hero-icon">
+
+    <h1>Waste Management LK</h1>
+    <p class="subtitle">
+      Your comprehensive platform for waste collection schedules, recycling
+      information, and environmental services across Sri Lanka
+    </p>
+
+    <!-- Search card: submitting this form sends the user to
+         collection-schedule.html with their district in the URL -->
+    <div class="search-card">
+      <h2>Search Your Collection Schedule</h2>
+      <form id="schedule-search-form" class="search-form">
+        <input
+          type="text"
+          id="district-input"
+          placeholder="Enter your district (e.g., Colombo, Gampaha)"
+          aria-label="Enter your district"
+        />
+        <button type="submit"><img src="images/search.png" alt="Logosearch" class="search-icon">Search</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       QUICK ACTIONS SECTION
+       Purpose: Direct shortcuts into the five core services.
+       Each card is a real link (<a>) to its own page, so the
+       whole card is clickable, keyboard-focusable, and works
+       even without JavaScript.
+       ===================================================== -->
+  <section class="section">
+    <h2 class="section-title">Quick Actions</h2>
+
+    <div class="quick-actions-grid">
+
+      <!-- Card 1: Check Collection Dates -->
+      <a href="collection-schedule.html" class="action-card">
+        <span class="hover-popup">Go to Collection Schedule →</span>
+        <div class="action-icon icon-blue">
+          <img src="images/date.png" alt="Logodate" class="mini-icon">
+        </div>
+        <h3>Check Collection Dates</h3>
+        <p>Click to access this service</p>
+      </a>
+
+      <!-- Card 2: Report Illegal Dumping -->
+      <a href="report-dumping.html" class="action-card">
+        <span class="hover-popup">Go to Report Dumping →</span>
+        <div class="action-icon icon-red">
+          <img src="images/warning.png" alt="Logowarning" class="mini-icon">
+        </div>
+        <h3>Report Illegal Dumping</h3>
+        <p>Click to access this service</p>
+      </a>
+
+      <!-- Card 3: Request Special Pickup -->
+      <a href="special-pickup.html" class="action-card">
+        <span class="hover-popup">Go to Special Pickup →</span>
+        <div class="action-icon icon-orange">
+          <img src="images/truck.png" alt="Logotruck" class="mini-icon">
+        </div>
+        <h3>Request Special Pickup</h3>
+        <p>Click to access this service</p>
+      </a>
+
+      <!-- Card 4: Recycling Guide -->
+      <a href="recycling-guide.html" class="action-card">
+        <span class="hover-popup">Go to Recycling Guide →</span>
+        <div class="action-icon icon-green">
+          <img src="images/guide.png" alt="Logoguide" class="mini-icon">
+        </div>
+        <h3>Recycling Guide</h3>
+        <p>Click to access this service</p>
+      </a>
+
+      <!-- Card 5: Find Recycling Centers -->
+      <a href="recycling-centers.html" class="action-card">
+        <span class="hover-popup">Go to Recycling Centers →</span>
+        <div class="action-icon icon-purple">
+          <img src="images/loc.png" alt="Logoloc" class="mini-icon">
+        </div>
+        <h3>Find Recycling Centers</h3>
+        <p>Click to access this service</p>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- =====================================================
+       ENVIRONMENTAL AWARENESS SECTION
+       Purpose: Educates users on the 4 main waste categories
+       so they can segregate their waste correctly. Cards link
+       to the relevant part of the Recycling Guide page.
+       ===================================================== -->
+  <section class="section env-section">
+    <h2 class="section-title">Environmental Awareness</h2>
+    <p class="section-intro">
+      Together we can create a cleaner, greener Sri Lanka. Proper waste
+      segregation and recycling are key to environmental sustainability.
+    </p>
+
+    <div class="waste-grid">
+      <a href="recycling-guide.html#organic" class="waste-card">
+        <div class="waste-dot dot-organic"></div>
+        <h3>Organic Waste</h3>
+        <p>Food scraps, garden waste, biodegradable materials</p>
+      </a>
+
+      <a href="recycling-guide.html#plastic" class="waste-card">
+        <div class="waste-dot dot-plastic"></div>
+        <h3>Plastic</h3>
+        <p>Bottles, containers, packaging materials</p>
+      </a>
+
+      <a href="recycling-guide.html#paper" class="waste-card">
+        <div class="waste-dot dot-paper"></div>
+        <h3>Paper</h3>
+        <p>Newspapers, cardboard, office paper</p>
+      </a>
+
+      <a href="recycling-guide.html#hazardous" class="waste-card">
+        <div class="waste-dot dot-hazardous"></div>
+        <h3>Hazardous</h3>
+        <p>Batteries, chemicals, electronic waste</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       COVERAGE AREAS SECTION
+       Purpose: Shows which municipal councils are currently
+       served, grouped by province. Each council name links to
+       its own filtered schedule search.
+       ===================================================== -->
+  <section class="section">
+    <h2 class="section-title">Coverage Areas</h2>
+
+    <div class="coverage-grid">
+      <div class="coverage-card">
+        <h3>Western Province</h3>
+        <ul>
+          <li><a href="collection-schedule.html?district=Colombo">• Colombo Municipal Council</a></li>
+          <li><a href="collection-schedule.html?district=Negombo">• Negombo Municipal Council</a></li>
+          <li><a href="collection-schedule.html?district=Kalutara">• Kalutara Urban Council</a></li>
+        </ul>
+      </div>
+
+      <div class="coverage-card">
+        <h3>Central Province</h3>
+        <ul>
+          <li><a href="collection-schedule.html?district=Kandy">• Kandy Municipal Council</a></li>
+          <li><a href="collection-schedule.html?district=Matale">• Matale Urban Council</a></li>
+          <li><a href="collection-schedule.html?district=Nuwara+Eliya">• Nuwara Eliya Council</a></li>
+        </ul>
+      </div>
+
+      <div class="coverage-card">
+        <h3>Southern Province</h3>
+        <ul>
+          <li><a href="collection-schedule.html?district=Galle">• Galle Municipal Council</a></li>
+          <li><a href="collection-schedule.html?district=Matara">• Matara Municipal Council</a></li>
+          <li><a href="collection-schedule.html?district=Hambantota">• Hambantota Council</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       FOOTER
+       Purpose: Secondary navigation + contact/government info.
+       ===================================================== -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <h3 class="brand" style="display:flex;align-items:center;gap:8px;">
+          <img src="images/logo.png" alt="Logo" class="logo-icon">
+          WasteManage LK
+        </h3>
+        <p>Government waste management platform for Sri Lanka.<br>Together for a cleaner, greener future.</p>
+      </div>
+
+      <div>
+        <h4>Quick Links</h4>
+        <a href="collection-schedule.html">Collection Schedule</a>
+        <a href="report-dumping.html">Report Dumping</a>
+        <a href="special-pickup.html">Special Pickup</a>
+        <a href="recycling-guide.html">Recycling Guide</a>
+        <a href="recycling-centers.html">Find Centers</a>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <p>Environmental Authority</p>
+        <p>Ministry of Environment</p>
+        <p>Email: info@wastegov.lk</p>
+        <p>Hotline: 1919</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 WasteManage LK. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Shared script: powers the district search form + a11y helpers -->
+  <script src="script.js"></script>
+</body>
+</html>
